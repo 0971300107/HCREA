@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCRÉA - Humanité et Créativité | ONG Culturelle Béninoise</title>
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Lightbox -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <style>
+        :root {
+            --primary: #D4AF37; /* Or béninois */
+            --secondary: #008751; /* Vert béninois */
+            --accent: #E63946; /* Rouge vif */
+            --light: #F8F5F0;
+            --dark: #1A1A2E;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 35px;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            padding: 8px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: var(--gradient);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .donate-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .donate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(26, 26, 46, 0.85), rgba(26, 26, 46, 0.9)), 
+                        url('https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            margin: 0 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        /* Floating Shapes Animation */
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+        }
+
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 5%;
+            animation: float 20s infinite linear;
+        }
+
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 10%;
+            animation: float 15s infinite linear reverse;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: var(--gradient);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: var(--secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 70px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-img-main {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .about-img-main:hover {
+            transform: scale(1.02);
+        }
+
+        /* Activities Gallery */
+        .activities-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid var(--light);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .activity-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .activity-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gradient);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .activity-img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .activity-card:hover .activity-img {
+            transform: scale(1.05);
+        }
+
+        .activity-content {
+            padding: 25px;
+        }
+
+        .activity-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .activity-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .activity-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .activity-icon:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Video Section */
+        .video-section {
+            background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(26, 26, 46, 0.9)), 
+                        url('https://images.unsplash.com/photo-1492684223066-e9e1a8d8a81c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        .video-section .section-title h2 {
+            color: white;
+        }
+
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .video-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .play-btn:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-info h4 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        /* Events Calendar */
+        .events-calendar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .event-date {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--gradient);
+            color: white;
+            padding: 10px 20px;
+            border-bottom-left-radius: 20px;
+            font-weight: 600;
+        }
+
+        .event-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* AI Assistant */
+        .ai-assistant {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .ai-btn {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            border: none;
+        }
+
+        .ai-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .ai-chat {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            display: none;
+            overflow: hidden;
+        }
+
+        .ai-chat.active {
+            display: block;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .ai-header {
+            background: var(--gradient);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ai-messages {
+            height: 300px;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 12px 15px;
+            border-radius: 15px;
+            max-width: 80%;
+        }
+
+        .ai-message {
+            background: var(--light);
+            margin-right: auto;
+        }
+
+        .user-message {
+            background: var(--gradient);
+            color: white;
+            margin-left: auto;
+        }
+
+        .ai-input {
+            display: flex;
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .ai-input input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            outline: none;
+        }
+
+        /* Donation Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            animation: modalSlide 0.3s ease;
+        }
+
+        @keyframes modalSlide {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .donation-option {
+            padding: 15px;
+            text-align: center;
+            border: 2px solid var(--light);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .donation-option.active {
+            border-color: var(--primary);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: grid;
+            gap: 30px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-content h1 {
+                font-size: 3.2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 30px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+                max-width: 300px;
+            }
+            
+            .ai-chat {
+                width: 90%;
+                right: 5%;
+            }
+            
+            .donation-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <div class="logo-icon">HC</div>
+                    <div class="logo-text">H<span>CRÉA</span></div>
+                </a>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#activities">Nos Arts</a></li>
+                    <li><a href="#events">Événements</a></li>
+                    <li><a href="#gallery">Galerie</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#" class="donate-btn" id="openDonation">
+                        <i class="fas fa-heart"></i> Faire un don
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                <div class="section-subtitle">ONG Culturelle Béninoise</div>
+                <h1>Humanité et Créativité</h1>
+                <p>Promouvoir l'art, la créativité et l'éducation artistique au service du développement humain au Bénin. Nous œuvrons pour l'épanouissement personnel, l'inclusion sociale et la participation des jeunes à la construction culturelle du pays.</p>
+                <div>
+                    <a href="#activities" class="btn">Découvrir nos arts</a>
+                    <a href="#contact" class="btn btn-secondary">Nous rejoindre</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <div class="section-subtitle">Notre Mission</div>
+                <h2>À propos de HCRÉA</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <h3>Transformer par la Créativité</h3>
+                    <p>Humanité et Créativité (HCRÉA) est une organisation culturelle et sociale béninoise engagée dans la promotion de l'art, de la créativité et de l'éducation artistique au service du développement humain.</p>
+                    <p>Fondée et dirigée par <strong>M. Horacio DJAGBESSI</strong>, artiste plasticien, formateur et promoteur culturel, HCRÉA offre aux enfants, adolescents et jeunes un espace d'expression, de découverte de talents et de formation artistique.</p>
+                    <p>Nous intervenons principalement dans les départements du <strong>Littoral et de l'Atlantique</strong>, avec un ancrage particulier dans la ville de <strong>Cotonou</strong>.</p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="500">0</div>
+                            <p>Bénéficiaires</p>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="50">0</div>
+                            <p>Ateliers réalisés</p>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="12">0</div>
+                            <p>Événements annuels</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Atelier artistique HCRÉA" class="about-img-main">
+                    <div class="stat-item" style="position: absolute; bottom: -30px; left: -30px; width: 200px;">
+                        <div class="stat-number">CNOA</div>
+                        <p>Membre du Conseil National des Organisations des Arts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <div class="section-subtitle">Nos Domaines d'Intervention</div>
+                <h2>Arts et Créativité</h2>
+            </div>
+            <div class="activities-filter" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="dessin">Dessin</button>
+                <button class="filter-btn" data-filter="peinture">Peinture</button>
+                <button class="filter-btn" data-filter="sculpture">Sculpture</button>
+                <button class="filter-btn" data-filter="mode">Mode & Design</button>
+                <button class="filter-btn" data-filter="collage">Collage</button>
+            </div>
+            <div class="activities-grid">
+                <div class="activity-card" data-category="dessin" data-aos="fade-up">
+                    <div class="activity-badge">Dessin</div>
+                    <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Atelier de dessin" class="activity-img">
+                    <div class="activity-content">
+                        <h3>Atelier de Dessin</h3>
+                        <p>Apprentissage des techniques de base et avancées du dessin pour enfants et adultes. Développement de l'observation et de l'expression graphique.</p>
+                        <div class="activity-icons">
+                            <div class="activity-icon" data-tooltip="Niveau Débutant"><i class="fas fa-user-graduate"></i></div>
+                            <div class="activity-icon" data-tooltip="Matériel fourni"><i class="fas fa-paint-brush"></i></div>
+                            <div class="activity-icon" data-tooltip="Certification"><i class="fas fa-award"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="activity-card" data-category="peinture" data-aos="fade-up" data-aos-delay="100">
+                    <div class="activity-badge">Peinture</div>
+                    <img src="https://images.unsplash.com/photo-1579783928621-7a13d66a62d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Atelier de peinture" class="activity-img">
+                    <div class="activity-content">
+                        <h3>Exploration Picturale</h3>
+                        <p>Découverte des techniques de peinture acrylique, aquarelle et huile. Expression des émotions à travers la couleur et la composition.</p>
+                        <div class="activity-icons">
+                            <div class="activity-icon" data-tooltip="Tous âges"><i class="fas fa-users"></i></div>
+                            <div class="activity-icon" data-tooltip="Exposition finale"><i class="fas fa-images"></i></div>
+                            <div class="activity-icon" data-tooltip="Encadrement pro"><i class="fas fa-chalkboard-teacher"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="activity-card" data-category="sculpture" data-aos="fade-up" data-aos-delay="200">
+                    <div class="activity-badge">Sculpture</div>
+                    <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Atelier de sculpture" class="activity-img">
+                    <div class="activity-content">
+                        <h3>Sculpture 3D</h3>
+                        <p>Travail de la terre, du bois et du métal. Initiation aux volumes et aux formes dans l'espace. Création d'œuvres monumentales collectives.</p>
+                        <div class="activity-icons">
+                            <div class="activity-icon" data-tooltip="Matériaux écologiques"><i class="fas fa-leaf"></i></div>
+                            <div class="activity-icon" data-tooltip="Techniques ancestrales"><i class="fas fa-history"></i></div>
+                            <div class="activity-icon" data-tooltip="Projet collectif"><i class="fas fa-hands-helping"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section" id="gallery">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Notre Impact en Vidéos</h2>
+                <p style="color: rgba(255,255,255,0.8); max-width: 700px; margin: 20px auto 0;">Découvrez nos activités et l'impact de nos actions à travers ces vidéos</p>
+            </div>
+            <div class="video-container">
+                <div class="video-card" data-aos="fade-up">
+                    <div class="video-thumbnail" onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_1')">
+                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Atelier enfants">
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h4>Ateliers pour enfants</h4>
+                        <p>Découvrez comment nous éveillons la créativité chez les plus jeunes</p>
+                    </div>
+                </div>
+                <div class="video-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="video-thumbnail" onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_2')">
+                        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Exposition">
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h4>Exposition annuelle</h4>
+                        <p>Le travail de nos jeunes talents exposé au public</p>
+                    </div>
+                </div>
+                <div class="video-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="video-thumbnail" onclick="openVideo('https://www.youtube.com/embed/VIDEO_ID_3')">
+                        <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fashion Day">
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h4>Fashion Day 2023</h4>
+                        <p>Défilé de mode mettant en avant les créations de nos designers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <div class="section-subtitle">Notre Calendrier</div>
+                <h2>Événements 2024</h2>
+            </div>
+            <div class="events-calendar">
+                <div class="event-card" data-aos="fade-up">
+                    <div class="event-date">DÉCEMBRE</div>
+                    <div class="event-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Noël Pour Tous</h3>
+                    <p>Événement annuel pour partager la joie de Noël avec les enfants à travers des activités artistiques et créatives. Distribution de cadeaux et spectacle de fin d'année.</p>
+                    <button class="btn" style="margin-top: 20px; padding: 10px 25px;" onclick="registerEvent('Noël Pour Tous')">S'inscrire</button>
+                </div>
+                <div class="event-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="event-date">JUIN</div>
+                    <div class="event-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Fashion Day</h3>
+                    <p>Journée dédiée à la mode et au design, mettant en avant les créations des jeunes talents formés par HCRÉA. Défilé, exposition et ateliers créatifs.</p>
+                    <button class="btn" style="margin-top: 20px; padding: 10px 25px;" onclick="registerEvent('Fashion Day')">S'inscrire</button>
+                </div>
+                <div class="event-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="event-date">MARS - AVRIL</div>
+                    <div class="event-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Arts sans tabac</h3>
+                    <p>Programme de sensibilisation contre le tabagisme à travers l'expression artistique. Création d'œuvres collectives et ateliers de prévention.</p>
+                    <button class="btn" style="margin-top: 20px; padding: 10px 25px;" onclick="registerEvent('Arts sans tabac')">S'inscrire</button>
+                </div>
+                <div class="event-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="event-date">JUILLET - SEPTEMBRE</div>
+                    <div class="event-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3>Les Arts'Teliers DJAGBESSI</h3>
+                    <p>Ateliers artistiques intensifs pendant les vacances scolaires pour les enfants et adolescents. Toutes disciplines artistiques enseignées par des professionnels.</p>
+                    <button class="btn" style="margin-top: 20px; padding: 10px 25px;" onclick="registerEvent('Arts\'Teliers DJAGBESSI')">S'inscrire</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <div class="section-subtitle">Restons en contact</div>
+                <h2>Contactez-nous</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-card" data-aos="fade-right">
+                        <div class="contact-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Coordination</h3>
+                        <p><strong>Horacio DJAGBESSI</strong><br>
+                        Artiste plasticien – Formateur & Promoteur culturel<br>
+                        Président / Responsable de HCRÉA</p>
+                    </div>
+                    <div class="contact-card" data-aos="fade-right" data-aos-delay="100">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Adresse</h3>
+                        <p>01 BP 5669 Cotonou<br>
+                        Littoral / Atlantique<br>
+                        République du Bénin</p>
+                    </div>
+                    <div class="contact-card" data-aos="fade-right" data-aos-delay="200">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Téléphone</h3>
+                        <p>+229 97 82 20 91<br>
+                        +229 63 57 96 98</p>
+                        <div class="social-links">
+                            <a href="https://facebook.com/Humanité et Créativité" class="social-link" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="mailto:hcrea.ong@gmail.com" class="social-link">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form" data-aos="fade-left">
+                    <h3>Envoyez-nous un message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Votre nom complet" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Votre adresse email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Votre numéro de téléphone">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" required>
+                                <option value="">Sujet du message</option>
+                                <option>Inscription aux ateliers</option>
+                                <option>Participation aux événements</option>
+                                <option>Partenariat</option>
+                                <option>Donation</option>
+                                <option>Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="6" placeholder="Votre message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>HCRÉA</h3>
+                    <p>Humanité et Créativité - Promouvoir l'art, la créativité et l'éducation artistique au service du développement humain au Bénin.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/Humanité et Créativité" class="social-link" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#activities">Nos arts</a></li>
+                        <li><a href="#events">Événements</a></li>
+                        <li><a href="#gallery">Galerie</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Nos valeurs</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Créativité éducative</li>
+                        <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Inclusion sociale</li>
+                        <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Promotion des talents</li>
+                        <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Engagement citoyen</li>
+                        <li><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i> Innovation artistique</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Inscrivez-vous pour recevoir nos actualités et informations sur nos événements.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Votre email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Humanité et Créativité (HCRÉA). Tous droits réservés. | ONG culturelle béninoise | Membre du CNOA</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">
+                    <a href="#" style="color: #999; margin: 0 10px;">Politique de confidentialité</a> | 
+                    <a href="#" style="color: #999; margin: 0 10px;">Mentions légales</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Assistant -->
+    <div class="ai-assistant">
+        <button class="ai-btn" id="aiToggle">
+            <i class="fas fa-robot"></i>
+        </button>
+        <div class="ai-chat" id="aiChat">
+            <div class="ai-header">
+                <div>
+                    <h4 style="color: white; margin: 0;">Assistant HCRÉA</h4>
+                    <small style="opacity: 0.8;">En ligne</small>
+                </div>
+                <button id="closeAi" style="background: none; border: none; color: white; cursor: pointer;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="ai-messages" id="aiMessages">
+                <div class="message ai-message">
+                    Bonjour ! Je suis l'assistant virtuel de HCRÉA. Comment puis-je vous aider aujourd'hui ?
+                </div>
+            </div>
+            <div class="ai-input">
+                <input type="text" id="aiInput" placeholder="Posez votre question...">
+                <button class="btn" style="margin-left: 10px; padding: 10px 20px;" id="sendAi">Envoyer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Donation Modal -->
+    <div class="modal" id="donationModal">
+        <div class="modal-content">
+            <div class="close-modal" id="closeDonation">
+                <i class="fas fa-times"></i>
+            </div>
+            <h2 style="margin-bottom: 10px;">Soutenir HCRÉA</h2>
+            <p style="margin-bottom: 30px;">Votre don contribue à offrir des ateliers artistiques gratuits aux enfants défavorisés.</p>
+            
+            <div class="donation-options">
+                <div class="donation-option" data-amount="5000">5 000 FCFA</div>
+                <div class="donation-option" data-amount="10000">10 000 FCFA</div>
+                <div class="donation-option active" data-amount="20000">20 000 FCFA</div>
+                <div class="donation-option" data-amount="50000">50 000 FCFA</div>
+                <div class="donation-option" data-amount="100000">100 000 FCFA</div>
+                <div class="donation-option" data-amount="custom">Autre montant</div>
+            </div>
+            
+            <div class="form-group" style="margin-top: 30px;">
+                <input type="text" class="form-control" id="customAmount" placeholder="Montant personnalisé (FCFA)" style="display: none;">
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Votre nom">
+            </div>
+            
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Votre email">
+            </div>
+            
+            <button class="btn" style="width: 100%; padding: 15px;" id="submitDonation">
+                <i class="fas fa-heart"></i> Faire un don maintenant
+            </button>
+            
+            <p style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: #666;">
+                <i class="fas fa-lock"></i> Paiement sécurisé
+            </p>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="modal" id="videoModal">
+        <div class="modal-content" style="max-width: 900px; padding: 20px;">
+            <div class="close-modal" id="closeVideo">
+                <i class="fas fa-times"></i>
+            </div>
+            <div id="videoPlayer" style="width: 100%; height: 500px; background: #000; border-radius: 10px; overflow: hidden;">
+                <!-- Video will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Animate stats counter
+        function animateCounter() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-count');
+                const increment = target / 200;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current);
+                        setTimeout(updateCounter, 10);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                // Start animation when element is in viewport
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCounter();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+                
+                observer.observe(counter);
+            });
+        }
+
+        // Activities Filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const activityCards = document.querySelectorAll('.activity-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                activityCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // AI Assistant
+        const aiToggle = document.getElementById('aiToggle');
+        const aiChat = document.getElementById('aiChat');
+        const closeAi = document.getElementById('closeAi');
+        const aiInput = document.getElementById('aiInput');
+        const sendAi = document.getElementById('sendAi');
+        const aiMessages = document.getElementById('aiMessages');
+        
+        aiToggle.addEventListener('click', () => {
+            aiChat.classList.toggle('active');
+        });
+        
+        closeAi.addEventListener('click', () => {
+            aiChat.classList.remove('active');
+        });
+        
+        const aiResponses = {
+            "bonjour": "Bonjour ! Comment puis-je vous aider concernant les activités de HCRÉA ?",
+            "ateliers": "Nous proposons des ateliers de dessin, peinture, sculpture, mode et design. Quel atelier vous intéresse ?",
+            "inscription": "Pour vous inscrire, remplissez le formulaire de contact ou appelez-nous au +229 97 82 20 91.",
+            "événements": "Nos prochains événements : Noël Pour Tous (décembre), Fashion Day (juin), Arts sans tabac (mars-avril), et les Arts'Teliers (juillet-septembre).",
+            "adresse": "Notre siège est au 01 BP 5669 Cotonou, République du Bénin.",
+            "don": "Merci de votre générosité ! Cliquez sur 'Faire un don' en haut de la page pour soutenir nos actions.",
+            "contact": "Vous pouvez nous joindre au +229 97 82 20 91 ou par email : hcrea.ong@gmail.com",
+            "horacio": "Horacio DJAGBESSI est le fondateur et directeur de HCRÉA, artiste plasticien et promoteur culturel."
+        };
+        
+        function addMessage(text, type) {
+            const message = document.createElement('div');
+            message.className = `message ${type}-message`;
+            message.textContent = text;
+            aiMessages.appendChild(message);
+            aiMessages.scrollTop = aiMessages.scrollHeight;
+        }
+        
+        sendAi.addEventListener('click', () => {
+            const question = aiInput.value.toLowerCase().trim();
+            if (!question) return;
+            
+            addMessage(question, 'user');
+            aiInput.value = '';
+            
+            // Simulate AI thinking
+            setTimeout(() => {
+                let response = "Je ne suis pas sûr de comprendre. Pouvez-vous reformuler votre question ?";
+                
+                for (const [key, value] of Object.entries(aiResponses)) {
+                    if (question.includes(key)) {
+                        response = value;
+                        break;
+                    }
+                }
+                
+                addMessage(response, 'ai');
+            }, 500);
+        });
+        
+        aiInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendAi.click();
+            }
+        });
+
+        // Donation Modal
+        const openDonation = document.getElementById('openDonation');
+        const donationModal = document.getElementById('donationModal');
+        const closeDonation = document.getElementById('closeDonation');
+        const donationOptions = document.querySelectorAll('.donation-option');
+        const customAmount = document.getElementById('customAmount');
+        const submitDonation = document.getElementById('submitDonation');
+        
+        openDonation.addEventListener('click', (e) => {
+            e.preventDefault();
+            donationModal.classList.add('active');
+        });
+        
+        closeDonation.addEventListener('click', () => {
+            donationModal.classList.remove('active');
+        });
+        
+        donationOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                donationOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                
+                if (option.getAttribute('data-amount') === 'custom') {
+                    customAmount.style.display = 'block';
+                    customAmount.focus();
+                } else {
+                    customAmount.style.display = 'none';
+                }
+            });
+        });
+        
+        submitDonation.addEventListener('click', () => {
+            const activeOption = document.querySelector('.donation-option.active');
+            const amount = activeOption.getAttribute('data-amount') === 'custom' 
+                ? customAmount.value 
+                : activeOption.getAttribute('data-amount');
+            
+            alert(`Merci pour votre don de ${amount} FCFA ! Vous serez redirigé vers la page de paiement sécurisé.`);
+            donationModal.classList.remove('active');
+        });
+
+        // Video Modal
+        const videoModal = document.getElementById('videoModal');
+        const closeVideo = document.getElementById('closeVideo');
+        
+        function openVideo(url) {
+            videoModal.classList.add('active');
+            document.getElementById('videoPlayer').innerHTML = `
+                <iframe width="100%" height="100%" src="${url}" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+            `;
+        }
+        
+        closeVideo.addEventListener('click', () => {
+            videoModal.classList.remove('active');
+            document.getElementById('videoPlayer').innerHTML = '';
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === donationModal) {
+                donationModal.classList.remove('active');
+            }
+            if (e.target === videoModal) {
+                videoModal.classList.remove('active');
+                document.getElementById('videoPlayer').innerHTML = '';
+            }
+        });
+
+        // Event Registration
+        function registerEvent(eventName) {
+            alert(`Merci de votre intérêt pour "${eventName}" ! Remplissez le formulaire de contact en indiquant l'événement qui vous intéresse.`);
+        }
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
+            this.reset();
+        });
+
+        // Newsletter Subscription
+        document.querySelector('.newsletter-form button').addEventListener('click', function() {
+            const email = this.parentElement.querySelector('input').value;
+            if (email) {
+                alert(`Merci de votre inscription à notre newsletter ! Un email de confirmation a été envoyé à ${email}`);
+                this.parentElement.querySelector('input').value = '';
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            animateCounter();
+            
+            // Add tooltips to activity icons
+            document.querySelectorAll('.activity-icon').forEach(icon => {
+                const tooltip = icon.getAttribute('data-tooltip');
+                if (tooltip) {
+                    icon.title = tooltip;
+                }
+            });
+            
+            // Preload animations
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
